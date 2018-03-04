@@ -21,6 +21,9 @@
       .profile h4 {
         text-shadow: .1em .1em #ccc;
       }
+      .profile img {
+        width: 200px;
+      }
       .alert {
         padding: .5em;
         background: tomato;
@@ -59,19 +62,27 @@
 
     const root = document.getElementById('root');
     const data = [{
-      imgSrc: 'https://www.placecage.com/c/100/150',
+      imgSrc: 'https://www.lighthouselabs.ca/uploads/team_member/avatar/191/medium_Joel.jpg',
       name: 'Joel Shinness',
       skills: []
     }, {
-      imgSrc: 'https://www.placecage.com/100/150',
+      imgSrc: 'https://www.lighthouselabs.ca/uploads/team_member/avatar/2/medium_don.JPG',
       name: 'Don Burks',
       skills: ['JavaScript', 'Puns'],
       alert: "This man's marbles are long gone."
     }];
 
     const profiles = data.map((profile) => {
-      // YOUR CODE GOES HERE!
-      // Take in a profile object and return some markup
+      const alert = profile.alert &&  (<p className="alert">{profile.alert}</p>)
+      const skills = profile.skills.length === 0 ?
+        <p>No Skills</p> :
+        <ul>{profile.skills.map(skill => <li>{skill}</li>)}</ul>
+      return (<div className='profile'>
+          {alert}
+          <img src={profile.imgSrc}/>
+          <h4>{profile.name}</h4>
+          {skills}
+        </div>);
     });
 
     const profilesSection = (<div className='profiles'>
