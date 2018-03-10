@@ -33,23 +33,36 @@
       </div>
     </div>
     <script type="text/babel">
+    const root = document.getElementById('root');
 
-    const button = // Create the button onClick handler
+    const button = <p><button>Click to Alert "Hello!"</button></p>
     
-    const form = // Create the form with onSubmit handler
-
+    const form = (<form>
+      <p>
+        <label htmlFor='name'>Name</label>
+        <input type='text' name='name'/>
+      </p>
+      <p>
+        <label htmlFor='favoriteFood'>Favorite Food</label>
+        <input type='text' name='favoriteFood'/>
+      </p>
+      <p><button type='submit'>Click to alert</button></p>
+    </form>);
+    
     const names = ['Joel', 'Don', 'Khurram', 'David', 'Karl', 'Rosy'];
     const listItems = names.map(name => {
-      // Return an li element for each name
+      return <li>{name} <button>Greet</button></li>
     });
 
     const list = <ul>{listItems}</ul>
 
-    reactDOM.render(<div>
+    ReactDOM.render(<div>
       {button}
+      <hr/>
       {form}
+      <hr/>
       {list}
-    </div>)
+    </div>, root)
     </script>
   </body>
 </html>
